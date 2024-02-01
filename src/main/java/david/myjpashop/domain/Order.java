@@ -69,6 +69,7 @@ public class Order
     {
         Order order = new Order();
 
+        order.setMember(member);
         order.setDelivery(delivery);
         for (OrderItem orderItem : orderItems)
         {
@@ -83,7 +84,7 @@ public class Order
     //주문취소 -> 아이템의 재고를 올림, 상태를 취소로 변경
     public void cancel()
     {
-        if(delivery.getStatus().equals(DeliveryStatus.COMP))
+        if(delivery.getStatus() == DeliveryStatus.COMP)
         {
             throw new IllegalStateException("배송이 완료된 주문은 취소할 수 없습니다.");
         }
